@@ -1,24 +1,11 @@
-import statistics
-import csv
+from mean import get_mean
+from median import get_median
+from mode import get_mode
 
-# reads csv file
-with open('SOCR-HeightWeight.csv', newline='') as f:
-    reader = csv.reader(f)
-    file_data = list(reader)
+mean = get_mean("SOCR-HeightWeight.csv")
+median = get_median("SOCR-HeightWeight.csv")
+mode = get_mode("SOCR-HeightWeight.csv")
 
-# To remove headers from CSV
-file_data.pop(0)
-
-total_weight = 0
-total_entries = len(file_data)
-data = []
-
-for person_data in file_data:
-    total_weight += float(person_data[2])
-    data.append(float(person_data[2]))
-
-data.sort()
-
-print(statistics.mean(data))
-print(statistics.median(data))
-print(statistics.mode(data))
+print(f"Mean: {mean}")
+print(f"Median: {median}")
+print(f"Mode: {mode:2f}")
